@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <section className='my-20 sm:mt-30 flex flex-col justify-center items-center gap-6 text-center'>
-        <h1 className='max-w-4xl text-4xl md:text-5xl lg:text-7xl font-semibold'>Chat with PDF documents in seconds</h1>
+        <h1 className='max-w-4xl text-4xl md:text-5xl lg:text-7xl font-bold'>Chat with PDF documents in seconds</h1>
         <p className='max-w-3xl mx-auto sm:text-xl pb-5'>
           Folio allows you to chat with your pdf documents. Simply upload your document and start asking questions.
         </p>
