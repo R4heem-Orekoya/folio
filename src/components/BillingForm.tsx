@@ -29,7 +29,7 @@ const BillingForm = ({subscriptionPlan}: BillingFormProps) => {
    
    return (
       <div className="min-h-[20rem] py-20">
-         <div className="w-[min(500px,100%)] p-4 bg-white rounded-lg border-[1px] border-zinc-200 shadow-md">
+         <div className="w-[min(650px,100%)] p-4 bg-white rounded-lg border-[1px] border-zinc-200 shadow-md">
             <h2 className="text-xl sm:text-2xl font-semibold text-zinc-800">Subscription Plan</h2>
             <p className="my-2 text-lg text-zinc-500">You&apos;re currently on the <span className="text-zinc-800 font-semibold">{subscriptionPlan.name}</span> plan.</p>
             
