@@ -66,7 +66,7 @@ const Dashboard = () => {
                </ul>
             ) : isLoading ? (
                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <Skeleton className="h-48 bg-red-200"/>
+                  <Skeleton className="h-48"/>
                   <Skeleton className="h-48"/>
                   <Skeleton className="h-48"/>
                </div>
