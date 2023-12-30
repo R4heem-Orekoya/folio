@@ -55,9 +55,6 @@ const ChatWrapper = ({fileId}: ChatWrapperProps) => {
           <div className="flex flex-col items-center gap-2">
             <ShieldAlert size={30} strokeWidth={2} className="text-red-500"/>
             <h3 className="font-medium text-center text-lg text-zinc-800 ">Too many pages in PDF</h3>
-            <p className="text-sm text-zinc-500">
-              Your <span className="font-semibold">current plan</span> only supports 5 pages
-            </p>
             <span className="mt-4">
               <Link href='/pricing' className="flex items-center gap-2 px-4 py-2 bg-zinc-100 hover:bg-zinc-200 text-zinc-800 rounded-md">
                 Pricing
