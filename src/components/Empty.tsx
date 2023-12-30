@@ -7,7 +7,7 @@ const Empty = () => {
          <div className='w-[180px] aspect-square'>
             <Lottie animationData={Animation}/>
          </div>
-         <p className='text-lg text-zinc-700'>You haven&apos;t uploaded any file!</p>
+         <p className='text-lg text-zinc-700 text-center'>You haven&apos;t uploaded any file!</p>
       </div>
    )
 }

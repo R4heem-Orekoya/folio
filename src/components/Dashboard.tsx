@@ -8,8 +8,13 @@ import Link from "next/link"
 import { FileText, Loader2, Plus, Trash2 } from "lucide-react"
 import { format } from 'date-fns'
 import { useState } from "react"
+import { getUserSubscriptionPlan } from "@/lib/stripe"
 
-const Dashboard = () => {
+interface PageProps {
+   subscriptionPlan: Awaited<ReturnType<typeof getUserSubscriptionPlan>>
+}
+
+const Dashboard = ({subscriptionPlan}: PageProps) => {
    const [currentlyDeletingFile, setCurrentlyDeletingFile] = useState<String | null>(null)
    
    const utils = trpc.useUtils()
@@ -31,7 +36,7 @@ const Dashboard = () => {
       <div className="py-10">
          <div className="flex flex-wrap justify-between items-center gap-6">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-zinc-800">Your Files</h2>
-            <UploadButton />
+            <UploadButton isSubscribed={subscriptionPlan.isSubscribed}/>
          </div>
          
          <div className="mt-10">

@@ -146,7 +146,7 @@ const PdfRenderer = ({url}: PdfRendererProps) => {
                   pageNumber={currPage} scale={scale} 
                   rotate={rotation} 
                   key={`@${renderedScale}`}
-                 /> : null
+                /> : null
               }
                 <Page 
                   className={`${isLoading ? 'hidden' : ''}`}

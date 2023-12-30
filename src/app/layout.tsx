@@ -1,4 +1,3 @@
-import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google' 
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -7,16 +6,19 @@ import { Toaster } from "@/components/ui/toaster"
 import Providers from '@/components/Providers'
 import 'react-loading-skeleton/dist/skeleton.css'
 import 'simplebar-react/dist/simplebar.min.css'
+import { constructMetadata } from '@/lib/utils'
+import type { Viewport } from 'next'
+
 
 const poppins = Poppins({
   weight: ['300', '400', '500', '600', '700'],
   subsets: ['latin'],
 })
 
-export const metadata: Metadata = {
-  title: 'Folio',
-  description: 'Chat with PDF in seconds',
+export const viewport: Viewport = {
+  themeColor: 'black',
 }
+export const metadata = constructMetadata()
 
 export default function RootLayout({
   children,

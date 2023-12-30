@@ -19,7 +19,7 @@ const Navbar = async() => {
                          <LoginLink>Sign In</LoginLink>
                     </div> :
                     <div className="flex items-center gap-6">
-                         <Link href='/dashboard' className="text-zinc-600 hover:text-zinc-800 text-lg font-medium">Dashboard</Link>
+                         <Link href='/dashboard' className="max-sm:hidden text-zinc-600 hover:text-zinc-800 text-lg font-medium">Dashboard</Link>
                          <UserAccountNav email={user.email ?? ''} imageUrl={user.picture ?? ''} name={!user.given_name || !user.family_name ? 'Your Account' : `${user.given_name} ${user.family_name}`}/>
                     </div>
                }

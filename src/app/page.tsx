@@ -17,7 +17,9 @@ export default function Home() {
 
         <Blob />
 
-        <div className='image max-w-4xl w-full aspect-[4/3] sm:aspect-video mt-8 rounded-md p-4 bg-zinc-100 border border-zinc-300'></div>
+        <div className='image max-w-4xl w-full aspect-[4/3] sm:aspect-video mt-8 rounded-md p-4 bg-zinc-100 border border-zinc-300'>
+          <img src="/large.png" alt="desktop-preview" className='w-full h-full object-cover'/>
+        </div>
 
       </section>
 
@@ -30,24 +32,24 @@ export default function Home() {
             <span className='text-lg'>01.</span>
             <h3 className='text-zinc-800 font-semibold text-xl'>Create an account</h3>
             <p className='my-3'>Either starting out with a free plan or choose our <Link href='/pricing' className='text-blue-500 underline'>Pro plan</Link>.</p>
-            <div className='w-full aspect-video mt-8 rounded-md bg-zinc-100 border border-zinc-300'>
-
+            <div className='w-full aspect-video mt-8 rounded-md bg-zinc-100 border border-zinc-300 overflow-hidden'>
+              <img src="/step1.png" alt="create account image" className='w-full h-full object-cover'/>
             </div>
           </div>
           <div className='col-span-1 aspect-video'>
             <span className='text-lg'>02.</span>
             <h3 className='text-zinc-800 font-semibold text-xl'>Upload your PDF file</h3>
             <p className='my-3'>We&apos;ll process your file and make it ready for you to chat with.</p>
-            <div className='w-full aspect-video mt-8 rounded-md bg-zinc-100 border border-zinc-300'>
-
+            <div className='w-full aspect-video mt-8 rounded-md bg-zinc-100 border border-zinc-300 overflow-hidden'>
+              <img src="/step2.png" alt="upload image" className='w-full h-full object-cover'/>
             </div>
           </div>
           <div className='col-span-1 aspect-video'>
             <span className='text-lg'>03.</span>
             <h3 className='text-zinc-800 font-semibold text-xl'>Start asking questions</h3>
             <p className='my-3'>It&apos;s that simple. Try out paperflow today, it takes less than a minute.</p>
-            <div className='w-full aspect-video mt-8 rounded-md bg-zinc-100 border border-zinc-300'>
-
+            <div className='w-full aspect-video mt-8 rounded-md bg-zinc-100 border border-zinc-300 overflow-hidden'>
+              <img src="/step3.png" alt="ask question image" className='w-full h-full object-cover'/>
             </div>
           </div>
         </div>
