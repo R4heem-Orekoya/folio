@@ -37,7 +37,7 @@ export default function Home() {
           <div className='col-span-1 aspect-video'>
             <span className='text-lg'>02.</span>
             <h3 className='text-zinc-800 font-semibold text-xl'>Upload your PDF file</h3>
-            <p className='my-3'>We'll process your file and make it ready for you to chat with.</p>
+            <p className='my-3'>We&apos;ll process your file and make it ready for you to chat with.</p>
             <div className='w-full aspect-video mt-8 rounded-md bg-zinc-100 border border-zinc-300'>
 
             </div>
@@ -45,7 +45,7 @@ export default function Home() {
           <div className='col-span-1 aspect-video'>
             <span className='text-lg'>03.</span>
             <h3 className='text-zinc-800 font-semibold text-xl'>Start asking questions</h3>
-            <p className='my-3'>It's that simple. Try out paperflow today, it takes less than a minute.</p>
+            <p className='my-3'>It&apos;s that simple. Try out paperflow today, it takes less than a minute.</p>
             <div className='w-full aspect-video mt-8 rounded-md bg-zinc-100 border border-zinc-300'>
 
             </div>

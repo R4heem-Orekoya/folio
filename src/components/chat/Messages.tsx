@@ -76,7 +76,7 @@ const Messages = ({fileId}: MessageProps) => {
       ) : (
         <div className="flex-1 flex flex-col items-center justify-center gap-2">
           <MessagesSquare size={40} strokeWidth={2} className="text-zinc-700"/>
-          <h3 className="font-semibold text-xl">You're all set!</h3>
+          <h3 className="font-semibold text-xl">You&apos;re all set!</h3>
           <p>Ask your first question to get started.</p>
         </div>
       )}

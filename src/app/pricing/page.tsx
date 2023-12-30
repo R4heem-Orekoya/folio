@@ -54,7 +54,7 @@ const page = async () => {
   return (
     <div className="text-center py-20 min-h-[calc(100vh-80px)]">
       <h3 className="text-2xl md:text-4xl font-semibold text-zinc-800">Pricing</h3>
-      <p className="text-sm sm:text-lg font-medium mt-4 text-zinc-600">Whether you're just trying out our sevice or need more. We've got you covered.</p>
+      <p className="text-sm sm:text-lg font-medium mt-4 text-zinc-600">Whether you&apos;re just trying out our sevice or need more. We&apos;ve got you covered.</p>
       
       <div className="w-[min(800px,100%)] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 p-4 mt-8 sm:mt-16">
         {pricingItems.map((pricingItem) => {
