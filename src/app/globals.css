@@ -94,6 +94,11 @@
   border-radius: 7px;
 }
 
+.semi-rounded{
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+}
+
 @media screen and (max-width: 400px) {
   .small-screen-hidden-buttons{
     display: none;

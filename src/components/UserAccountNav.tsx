@@ -3,7 +3,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSepara
 import { Avatar, AvatarFallback } from './ui/avatar'
 import Image from "next/image"
 import Link from "next/link"
-import { Zap } from "lucide-react"
+import { ChevronDown, Zap } from "lucide-react"
 import { LogoutLink } from '@kinde-oss/kinde-auth-nextjs/server'
 
 interface UserAccountNavProps {
@@ -18,7 +18,7 @@ const UserAccountNav = async ({email, imageUrl, name}: UserAccountNavProps) => {
    return (
       <DropdownMenu>
          <DropdownMenuTrigger asChild className="overflow-visible">
-            <button>
+            <button className="flex items-center gap-2 hover:bg-zinc-100 p-2 rounded-md">
                <Avatar className="relative w-10 h-10">
                   {
                      imageUrl ? (
@@ -28,10 +28,11 @@ const UserAccountNav = async ({email, imageUrl, name}: UserAccountNavProps) => {
                      ) :
                      <AvatarFallback>
                         <span className="sr-only">{name}</span>
-                        <img src={`https://api.dicebear.com/7.x/pixel-art/svg?seed=${name}`} alt="avatar"/>
+                        <img src={`https://api.dicebear.com/7.x/pixel-art/svg?seed=${name}`} alt="avatar" className="border border-zinc-300 bg-white rounded-full"/>
                      </AvatarFallback>
                   }
                </Avatar>
+               <ChevronDown size={18} className="text-zinc-600"/>
             </button>
          </DropdownMenuTrigger>
          
