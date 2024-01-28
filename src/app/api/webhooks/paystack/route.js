@@ -10,6 +10,7 @@ export async function POST(request) {
    
    if(hash === signature){
       const webhook = request.body
+      console.log(request);
       
       if(webhook.event === 'charge.success'){
          const startDate = new Date(webhook.data.paid_at || '')
