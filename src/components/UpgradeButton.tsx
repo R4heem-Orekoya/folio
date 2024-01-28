@@ -5,14 +5,14 @@ import { trpc } from "@/app/_trpc/client"
 
 const UpgradeButton = () => {
   
-  const {mutate: createStripeSession} = trpc.createPaystackSession.useMutation({
+  const {mutate: createPaystackSession} = trpc.createPaystackSession.useMutation({
     onSuccess: ({url}) => {
       window.location.href = url ?? "/dashboard/billing"
     }
   })
   
   return (
-    <button onClick={() => createStripeSession()} className="w-full py-3 bg-white text-zinc-900 text-lg font-semibold rounded-md hover:opacity-90">
+    <button onClick={() => createPaystackSession()} className="w-full py-3 bg-white text-zinc-900 text-lg font-semibold rounded-md hover:opacity-90">
       Go Pro
     </button>
   )
