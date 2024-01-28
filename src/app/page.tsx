@@ -2,17 +2,24 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Blob from '@/components/Blob'
 import { RegisterLink } from "@kinde-oss/kinde-auth-nextjs/server"
+import { ChevronRight } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 export default function Home() {
   return (
     <>
-      <section className='my-20 sm:mt-30 flex flex-col justify-center items-center gap-6 text-center'>
-        <h1 className='max-w-4xl text-4xl md:text-5xl lg:text-7xl font-bold'>Chat with PDF documents in seconds</h1>
+      <section className='mt-10 mb-20 sm:mt-30 flex flex-col justify-center items-center gap-6 text-center'>
+        <div className='bg-zinc-50 py-1 px-4 rounded-3xl border border-zinc-100 text-sm font-semibold text-zinc-700 shadow-sm flex items-center gap-2'>
+          <img src='/live.png' alt="confetti" className='h-8 aspect-square object-cover'/> Folio is live
+        </div>
+        <h1 className='max-w-4xl text-4xl md:text-5xl lg:text-7xl font-bold'>Chat with PDF documents in minutes</h1>
         <p className='max-w-3xl mx-auto sm:text-xl pb-5'>
           Folio allows you to chat with your pdf documents. Simply upload your document and start asking questions.
         </p>
         <RegisterLink>
-          <span className='px-8 py-4 rounded-md bg-zinc-800 hover:bg-zinc-700 duration-300 text-white sm:text-lg'>Get Started</span>
+          <Button size='xl'>
+            Get Started <ChevronRight size={20} className='group-hover:ml-2 duration-300'/>
+          </Button>
         </RegisterLink>
 
         <Blob />
@@ -47,7 +54,7 @@ export default function Home() {
           <div className='col-span-1 aspect-video'>
             <span className='text-lg'>03.</span>
             <h3 className='text-zinc-800 font-semibold text-xl'>Start asking questions</h3>
-            <p className='my-3'>It&apos;s that simple. Try out paperflow today, it takes less than a minute.</p>
+            <p className='my-3'>It&apos;s that simple. Try out <span className='font-semibold'>folio</span> today, it takes less than a minute.</p>
             <div className='w-full aspect-video mt-8 rounded-md bg-zinc-100 border border-zinc-300 overflow-hidden'>
               <img src="/step3.png" alt="ask question image" className='w-full h-full object-cover'/>
             </div>

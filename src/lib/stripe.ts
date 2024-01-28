@@ -1,4 +1,4 @@
-import { PLANS } from '@/config/stripe'
+import { PLANS } from '@/config/paystack'
 import { db } from '@/db'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import Stripe from 'stripe'

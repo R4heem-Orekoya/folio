@@ -1,9 +1,10 @@
 import UpgradeButton from "@/components/UpgradeButton"
-import { PLANS } from "@/config/stripe"
+import { Button } from "@/components/ui/button"
+import { PLANS } from "@/config/paystack"
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 import { CheckCircle2 } from "lucide-react"
 import Link from "next/link"
-import { text } from "node:stream/consumers"
+import { getUserSubscriptionPlan } from "@/lib/paystack"
 
 const pricingItems = [
   {
@@ -50,6 +51,7 @@ const pricingItems = [
 const page = async () => {
   const { getUser } = getKindeServerSession()
   const user = await getUser()
+  const { isSubscribed } = await getUserSubscriptionPlan()
   
   return (
     <div className="text-center py-20 min-h-[calc(100vh-80px)]">
@@ -65,7 +67,7 @@ const page = async () => {
                 <h4 className="text-xl font-semibold">{pricingItem.plan}</h4>
                 <p className={`text-sm my-4 ${pricingItem.plan === 'Pro' ? 'text-slate-300' : 'text-zinc-600'}`}>{pricingItem.tagline}</p>
                 <p className='text-5xl my-6 font-semibold'>
-                  ${price}
+                  #{price}
                   <span className={`text-sm ml-2 font-thin text-zinc-400 ${pricingItem.plan === 'Pro' ? 'text-slate-300' : 'text-zinc-600'}`}>/ month</span>
                 </p> 
               </div>
@@ -78,19 +80,27 @@ const page = async () => {
               
               <div className="mt-5">
                 {
-                  pricingItem.plan === 'Free' ? (
+                  !isSubscribed && pricingItem.plan === 'Free' ? (
                     <Link href={user ? '/dashboard' : '/sign-in'} >
                       <button className="bg-zinc-900 text-white mt-4 w-full py-3 text-lg font-semibold rounded-md hover:opacity-90">
-                      {user ? 'Go Pro' : 'Sign up'}
+                      {user ? 'Dashboard' : 'Sign in'}
                       </button>
                     </Link>
                   ) : user ? (
                     <UpgradeButton />
                   ) : (
                     <Link href='/sign-in'> 
-                      <button className="bg-zinc-900 text-white mt-4 w-full py-3 text-lg font-semibold rounded-md hover:opacity-90">
-                        {user ? 'Go Pro' : 'Sign up'}
+                      <button className="bg-white text-zinc-900 mt-4 w-full py-3 text-lg font-semibold rounded-md hover:opacity-90">
+                        {user ? 'Go Pro' : 'Sign in'}
                       </button>
+                    </Link>
+                  )
+                }
+                
+                {
+                  isSubscribed && (
+                    <Link href='/dashboard'>
+                      <Button>Dashboard</Button>
                     </Link>
                   )
                 }

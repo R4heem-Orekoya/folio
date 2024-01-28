@@ -8,7 +8,7 @@ import Link from "next/link"
 import { FileText, Loader2, Plus, Trash2 } from "lucide-react"
 import { format } from 'date-fns'
 import { useState } from "react"
-import { getUserSubscriptionPlan } from "@/lib/stripe"
+import { getUserSubscriptionPlan } from "@/lib/paystack"
 
 interface PageProps {
    subscriptionPlan: Awaited<ReturnType<typeof getUserSubscriptionPlan>>

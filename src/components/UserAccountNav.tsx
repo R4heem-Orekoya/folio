@@ -1,9 +1,9 @@
-import { getUserSubscriptionPlan } from "@/lib/stripe"
+import { getUserSubscriptionPlan } from "@/lib/paystack"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu"
 import { Avatar, AvatarFallback } from './ui/avatar'
 import Image from "next/image"
 import Link from "next/link"
-import { ChevronDown, Zap } from "lucide-react"
+import { ChevronDown, Gem, LayoutDashboard, LogOut, Zap } from "lucide-react"
 import { LogoutLink } from '@kinde-oss/kinde-auth-nextjs/server'
 
 interface UserAccountNavProps {
@@ -14,6 +14,7 @@ interface UserAccountNavProps {
 
 const UserAccountNav = async ({email, imageUrl, name}: UserAccountNavProps) => {
    const subscription = await getUserSubscriptionPlan()
+   
    
    return (
       <DropdownMenu>
@@ -49,11 +50,11 @@ const UserAccountNav = async ({email, imageUrl, name}: UserAccountNavProps) => {
             <DropdownMenuSeparator />  
             
             <DropdownMenuItem asChild>
-               <Link href='/dashboard'>Dashboard</Link>
+               <Link href='/dashboard'><LayoutDashboard size={15} strokeWidth={1.6} className="mr-2"/>Dashboard</Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
                {subscription?.isSubscribed ? (
-                  <Link href='/dashboard/billing'>Manage Subscription</Link>
+                  <Link href='/dashboard/billing'><Gem size={15} strokeWidth={1.6} className="mr-2"/>See Subscription</Link>
                ) : (
                   <Link href='/pricing'>Go Pro <Zap size={15} strokeWidth={1.6} className="text-blue-500 ml-2"/></Link>
                )}
@@ -62,7 +63,7 @@ const UserAccountNav = async ({email, imageUrl, name}: UserAccountNavProps) => {
             <DropdownMenuSeparator /> 
             
             <DropdownMenuItem asChild>
-               <LogoutLink>Log out</LogoutLink>
+               <LogoutLink><LogOut size={15} strokeWidth={1.8} className="mr-2 text-red-500"/>Log out</LogoutLink>
             </DropdownMenuItem>
          </DropdownMenuContent> 
       </DropdownMenu>

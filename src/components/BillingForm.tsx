@@ -1,19 +1,23 @@
 'use client'
 
-import { getUserSubscriptionPlan } from "@/lib/stripe"
 import { useToast } from "./ui/use-toast"
 import { trpc } from "@/app/_trpc/client"
+import { getUserSubscriptionPlan } from "@/lib/paystack"
 import { Loader2 } from "lucide-react"
 import { format } from "date-fns"
+import { Button } from "./ui/button"
+import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/dist/types"
+import Link from "next/link"
 
-interface BillingFormProps {
-subscriptionPlan: Awaited<ReturnType<typeof getUserSubscriptionPlan>>
+interface PropsTypes {
+   subscriptionPlan: Awaited<ReturnType<typeof getUserSubscriptionPlan>>,
+   user: KindeUser | null
 }
 
-const BillingForm = ({subscriptionPlan}: BillingFormProps) => {
+const BillingForm = ({subscriptionPlan, user}: PropsTypes) => {
    const {toast} = useToast()
    
-   const {mutate: createStripeSession, isLoading} = trpc.createStripeSession.useMutation({
+   const {mutate: createPaystackSession, isLoading} = trpc.createPaystackSession.useMutation({
       onSuccess: ({url}) => {
          if (url) window.location.href = url
          if(!url) {
@@ -26,7 +30,6 @@ const BillingForm = ({subscriptionPlan}: BillingFormProps) => {
       }
    })
    
-   console.log(subscriptionPlan.isCanceled);
    
    
    return (
@@ -34,38 +37,33 @@ const BillingForm = ({subscriptionPlan}: BillingFormProps) => {
          <form 
             onSubmit={(e) => {
                e.preventDefault()
-               createStripeSession()
+               createPaystackSession()
             }}>
-            <div className="w-[min(650px,100%)] p-4 bg-white rounded-lg border-[1px] border-zinc-200 shadow-md">
+            <div className="w-[min(500px,100%)] p-4 bg-white rounded-lg border-[1px] border-zinc-200 shadow-md">
                <h2 className="text-xl sm:text-2xl font-semibold text-zinc-800">Subscription Plan</h2>
-               <p className="my-2 text-lg text-zinc-500">You&apos;re currently on the <span className="text-zinc-800 font-semibold">{subscriptionPlan.name}</span> plan.</p>
-               
-               <div className="flex justify-between items-center flex-wrap gap-4 mt-10">
-                  <button className="flex items-center gap-2 px-8 py-3 bg-zinc-800 text-white sm:text-lg font-medium rounded-lg duration-300 hover:bg-zinc-700">
-                     {
-                        isLoading ? (
-                           <Loader2 size={15} className="text-white animate-spin"/>
-                        ) : null
-                     }
-                     
-                     {
-                        subscriptionPlan.isSubscribed ? 'Manage Subscription' : 'Go Pro'
-                     }
-                  </button>
-                  
+               <p className="my-2 text-lg text-zinc-500">
+                  You&apos;re currently on the 
+                  <span className="text-zinc-800 font-semibold">
+                     {subscriptionPlan.isSubscribed ? ' Pro ' : ' Free '}
+                  </span> 
+                  plan.
+               </p>
+               <div className="mt-8">
                   {
-                     subscriptionPlan.isSubscribed ? (
+                     user && subscriptionPlan.isSubscribed ? (
                         <p>
-                           {
-                              subscriptionPlan.isCanceled ? 
-                              'Your plan will be canceled on ' :
-                              'Your plan will be renewed on '
-                           }
-                           <span className="font-semibold">
-                              {format(subscriptionPlan.stripeCurrentPeriodEnd!, 'dd.mm.yyyy')}
+                           You will be on the pro plan till:  
+                           <span className="font-semibold ml-1">
+                              {format(subscriptionPlan.subscriptionEndDate!, 'dd, MM, yyyy')}
                            </span>
                         </p>
-                     ) : null
+                     ) : !user ? (
+                        <Link href='/sign-in'>
+                           <Button type="button" size='lg'>Login</Button>
+                        </Link>
+                     ) : (
+                        <Button type="submit" size='lg'>Go Pro</Button>
+                     )
                   }
                </div>
             </div>

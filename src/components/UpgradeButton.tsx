@@ -5,7 +5,7 @@ import { trpc } from "@/app/_trpc/client"
 
 const UpgradeButton = () => {
   
-  const {mutate: createStripeSession} = trpc.createStripeSession.useMutation({
+  const {mutate: createStripeSession} = trpc.createPaystackSession.useMutation({
     onSuccess: ({url}) => {
       window.location.href = url ?? "/dashboard/billing"
     }

@@ -5,8 +5,8 @@ import { PDFLoader } from 'langchain/document_loaders/fs/pdf'
 import { OpenAIEmbeddings } from "langchain/embeddings/openai";
 import { pinecone } from '@/lib/pinecone'
 import { PineconeStore } from "langchain/vectorstores/pinecone";
-import { getUserSubscriptionPlan } from "@/lib/stripe";
-import { PLANS } from "@/config/stripe";
+import { getUserSubscriptionPlan } from "@/lib/paystack";
+import { PLANS } from "@/config/paystack";
 
 
 const f = createUploadthing();

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 const Blob = () => {
      return (
-          <div className='absolute left-0 -z-10 blur-3xl opacity-[15%] max-sm:w-[200px] max-sm:aspect-square max-sm:opacity-[8%]'>
+          <div className='absolute left-0 -z-10 blur-3xl opacity-[20%] max-sm:w-[200px] max-sm:aspect-square max-sm:opacity-[8%]'>
                <svg id="visual" viewBox="0 0 500 500" width="500" height="500">
                     <g transform="translate(256.7852176812981 207.15471878985835)">
                          <motion.path
