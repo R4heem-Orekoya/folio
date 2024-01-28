@@ -1,8 +1,7 @@
 import { PLANS } from '@/config/paystack'
 import { db } from '@/db'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
-import {Paystack} from 'paystack-sdk';
-import { paystackSession } from '@/trpc';
+import Paystack from '@paystack/paystack-sdk';
 
 export const paystack = new Paystack(process.env.PAYSTACK_API_KEY ?? '')
 

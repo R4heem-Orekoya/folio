@@ -6,12 +6,8 @@ import { z } from 'zod'
 import { INFINITE_QUERY_LIMIT } from '@/config/infinite-query';
 import { absoluteUrl } from '@/lib/utils';
 import { getUserSubscriptionPlan, paystack } from '@/lib/paystack';
-import { PLANS } from '@/config/paystack';
 import { TransactionInitialized } from 'paystack-sdk/dist/transaction/interface';
 import { BadRequest } from 'paystack-sdk/dist/interface';
-
-
-export let paystackSession: TransactionInitialized | BadRequest;
 
 export const appRouter = router({
    authCallback: publicProcedure.query(async () => {
@@ -95,7 +91,7 @@ export const appRouter = router({
       
       const subscriptionPlan = await getUserSubscriptionPlan()
       
-      paystackSession = await paystack.transaction.initialize({
+      const paystackSession = await paystack.transaction.initialize({
          email: dbUser.email,
          amount: "200000",
          channels: ['card'],
