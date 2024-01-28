@@ -6,8 +6,6 @@ import { z } from 'zod'
 import { INFINITE_QUERY_LIMIT } from '@/config/infinite-query';
 import { absoluteUrl } from '@/lib/utils';
 import { getUserSubscriptionPlan, paystack } from '@/lib/paystack';
-import { TransactionInitialized } from 'paystack-sdk/dist/transaction/interface';
-import { BadRequest } from 'paystack-sdk/dist/interface';
 
 export const appRouter = router({
    authCallback: publicProcedure.query(async () => {
