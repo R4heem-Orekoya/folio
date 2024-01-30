@@ -48,6 +48,7 @@
     "openai": "^4.24.1",
     "paystack-sdk": "^2.5.10",
     "pdf-parse": "^1.1.1",
+    "prisma": "^5.8.1",
     "react": "^18",
     "react-confetti": "^6.1.0",
     "react-dom": "^18",
@@ -74,7 +75,6 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.3",
     "postcss": "^8",
-    "prisma": "^5.8.1",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }

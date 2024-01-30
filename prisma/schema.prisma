@@ -25,6 +25,7 @@ model User {
   
   paystackCustomerId            String?   @unique @map(name: "paystack_customer_id")
   paystackCardToken             String?   @unique @map(name: "paystack_card_token")
+  paystackSubscriptionCode      String?   @unique @map(name: "paystack_subscription_code")
   paystackSubscriptionStartDate DateTime? @map(name: "paystack_subscription_start_date")
 }
 

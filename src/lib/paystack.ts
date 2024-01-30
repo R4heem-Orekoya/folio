@@ -15,6 +15,7 @@ export const getUserSubscriptionPlan = async () => {
       return {
          ...PLANS[0],
          isSubscribed: false,
+         isCancelled: false,   
          subscriptionId: null,
          subscriptionEndDate: null,
       }
@@ -30,6 +31,7 @@ export const getUserSubscriptionPlan = async () => {
       return {
         ...PLANS[0],
         isSubscribed: false,
+        isCancelled: false,
         subscriptionId: null,
         subscriptionEndDate: null,
       }
@@ -43,10 +45,21 @@ export const getUserSubscriptionPlan = async () => {
    
    const plan = isSubscribed ? PLANS[1] : null
    
+   let isCancelled = false
+   if(isSubscribed && dbUser.paystackSubscriptionCode){
+      const paystackPlan:any = await paystack.subscription.fetch(dbUser.paystackSubscriptionCode)
+      isCancelled = paystackPlan.data.status === 'non-renewing' ? true : false
+   }
+   
+   // const link = await paystack.subscription.generateSubscriptionLink('SUB_nzufkx3253gny1r')
+   // console.log(link);
+   
+   
    return {
       ...plan,
       subscriptionId: dbUser.paystackCustomerId,
       subscriptionEndDate: dbUser.paystackSubscriptionStartDate,
       isSubscribed,
+      isCancelled
    }
 }

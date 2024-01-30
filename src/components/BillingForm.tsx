@@ -29,8 +29,7 @@ const BillingForm = ({subscriptionPlan, user}: PropsTypes) => {
          }
       }
    })
-   
-   
+
    
    return (
       <div className="min-h-[20rem] py-20">
@@ -49,22 +48,37 @@ const BillingForm = ({subscriptionPlan, user}: PropsTypes) => {
                   plan.
                </p>
                <div className="mt-8">
-                  {
-                     user && subscriptionPlan.isSubscribed ? (
+                  {user && subscriptionPlan.isSubscribed ? (
+                     <>
                         <p>
-                           You will be on the pro plan till:  
+                           Your plan will renew automatically on
                            <span className="font-semibold ml-1">
                               {format(subscriptionPlan.subscriptionEndDate!, 'dd, MM, yyyy')}
                            </span>
                         </p>
-                     ) : !user ? (
-                        <Link href='/sign-in'>
-                           <Button type="button" size='lg'>Login</Button>
-                        </Link>
-                     ) : (
-                        <Button type="submit" size='lg'>Go Pro</Button>
-                     )
-                  }
+                        <Button type='submit' size='xl'>
+                           Cancel Subscription
+                        </Button>
+                     </>
+                  ): user && subscriptionPlan.isCancelled ? (
+                        <p>
+                           Your plan will cancel on
+                           <span className="font-semibold ml-1">
+                              {format(subscriptionPlan.subscriptionEndDate!, 'dd, MM, yyyy')}
+                           </span>
+                        </p>
+                  ) : (
+                     <Button type='submit' size='lg' className="text-lg disabled:cursor-not-allowed" disabled={isLoading}>
+                        {isLoading && (<Loader2 className="animate-spin mr-4" size={13}/>)}
+                        Go Pro
+                     </Button>
+                  )}
+                  
+                  {!user && (
+                     <Link href='/sign-in'>
+                        <Button type="button" size='lg'>Login</Button>
+                     </Link>
+                  )}
                </div>
             </div>
          </form>
