@@ -1,9 +1,10 @@
 import { db } from '@/db'
-import { createHmac } from 'crypto'
+// import { createHmac } from 'crypto'
+const crypto = require('crypto');
 
 export async function POST(request) {
    const secret = process.env.PAYSTACK_API_KEY;
-   const hash = createHmac('sha512', secret).update(JSON.stringify(request.body)).digest('hex');
+   const hash = crypto.createHmac('sha512', secret).update(JSON.stringify(request.body)).digest('hex');
 
    if (hash == request.headers.get('x-paystack-signature')){
       const webhook = request.body;
