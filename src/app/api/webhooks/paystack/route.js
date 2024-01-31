@@ -6,7 +6,7 @@ export async function POST(request) {
    const secret = process.env.PAYSTACK_API_KEY;
    const hash = crypto.createHmac('sha512', secret).update(JSON.stringify(request.body)).digest('hex');
 
-   if (hash == request.headers.get('x-paystack-signature')){
+   if (hash == request.headers['x-paystack-signature']){
       const webhook = request.body;
       console.log(webhook);
 
