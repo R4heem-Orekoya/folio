@@ -5,7 +5,7 @@ import { createHmac } from 'crypto'
 export async function POST(request) {
    const secret = process.env.PAYSTACK_API_KEY;
    const hash = createHmac('sha512', secret).update(JSON.stringify(request.body)).digest('hex')
-   const signature = headers().get('x-paystack-signature')
+   const signature = request.headers['x-paystack-signature']
 
    if (hash == signature) {
       const webhook = request.body;
