@@ -1,17 +1,15 @@
 import { db } from '@/db'
-import { headers } from 'next/headers'
 import { createHmac } from 'crypto'
 
 export async function POST(request) {
    const secret = process.env.PAYSTACK_API_KEY;
-   const hash = createHmac('sha512', secret).update(JSON.stringify(request.body)).digest('hex')
-   const signature = request.headers['x-paystack-signature']
+   const hash = createHmac('sha512', secret).update(JSON.stringify(request.body)).digest('hex');
 
-   if (hash == signature) {
+   if (hash == request.headers.get('x-paystack-signature')){
       const webhook = request.body;
       console.log(webhook);
 
-      if (webhook.event === 'subscription.create') {
+      if (webhook?.event === 'subscription.create') {
          try {
             await db.user.update({
                where: {
