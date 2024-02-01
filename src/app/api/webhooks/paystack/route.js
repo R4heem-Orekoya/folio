@@ -24,7 +24,7 @@ export async function POST(request) {
       try {
          await db.user.update({
             where: {
-               id: webhook.data?.customer.email
+               email: webhook.data.customer.email
             },
             data: {
                paystackCardToken: webhook.data.authorization.authorization_code,
