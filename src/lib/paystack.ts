@@ -51,6 +51,7 @@ export const getUserSubscriptionPlan = async () => {
       isCancelled = paystackPlan.data.status === 'non-renewing' ? true : false
    }
    
+   
    // const link = await paystack.subscription.generateSubscriptionLink('SUB_nzufkx3253gny1r')
    // console.log(link);
    

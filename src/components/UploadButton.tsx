@@ -84,7 +84,7 @@ const UploadDropZone = ({ isSubscribed } : { isSubscribed : boolean}) => {
                      <div className="flex flex-col items-center justify-center">
                         <FileUp size={30} strokeWidth={1.2} className="stroke-zinc-600"/>
                         <p className="my-2 text-zinc-700 text-center">Click to upload or <span className="text-zinc-500">drop file here</span></p>
-                        <p className="text-zinc-400">PDF (up to {isSubscribed ? '16MB' : '4MB'})</p>
+                        <p className="text-zinc-400">PDF (up to {isSubscribed ? '16MB' : '2MB'})</p>
                      </div>
                      
                      {acceptedFiles && acceptedFiles[0] && (

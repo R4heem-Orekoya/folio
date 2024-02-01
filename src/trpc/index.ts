@@ -90,10 +90,10 @@ export const appRouter = router({
       const subscriptionPlan = await getUserSubscriptionPlan()
       
       if (subscriptionPlan.isSubscribed && dbUser.paystackSubscriptionCode) {
-         const paystackSession:any = paystack.subscription.generateSubscriptionLink(dbUser.paystackSubscriptionCode)
+         const paystackSession:any = await paystack.subscription.generateSubscriptionLink(dbUser.paystackSubscriptionCode)
          
          
-         return { url: paystackSession.data.link }
+         return { url: paystackSession.data?.link }
       }
       
       const paystackSession = await paystack.transaction.initialize({

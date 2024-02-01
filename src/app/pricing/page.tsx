@@ -16,7 +16,7 @@ const pricingItems = [
         text: '5 pages per PDF',
       },
       {
-        text: '4MB file size limit',
+        text: '2MB file size limit',
       },
       {
         text: 'Mobile-friendly interface',
