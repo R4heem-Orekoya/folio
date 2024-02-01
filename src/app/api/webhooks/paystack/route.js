@@ -2,7 +2,7 @@ import { db } from '@/db'
 import { createHmac } from 'crypto'
 
 export async function POST(request) {
-   console.log(request);
+
    const secret = process.env.PAYSTACK_API_KEY;
    
    // Validate request body content type
@@ -12,6 +12,7 @@ export async function POST(request) {
    
    // Fetch and parse request body
    const webhook = await request.json();
+   console.log(webhook);
 
    const hash = createHmac('sha512', secret).update(JSON.stringify(webhook)).digest('hex');
    
