@@ -2,6 +2,7 @@ import { db } from '@/db'
 import { createHmac } from 'crypto'
 
 export async function POST(request) {
+   console.log(request);
    const secret = process.env.PAYSTACK_API_KEY;
    
    // Validate request body content type
