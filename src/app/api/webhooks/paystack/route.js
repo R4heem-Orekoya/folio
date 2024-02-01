@@ -20,7 +20,7 @@ export async function POST(request) {
       return new Response('Unauthorized', { status: 401 });
    }
 
-   if (webhook?.event === 'subscription.create') {
+   if (webhook?.event === 'charge.success') {
       try {
          await db.user.update({
             where: {
