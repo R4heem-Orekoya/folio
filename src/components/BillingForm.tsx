@@ -85,7 +85,7 @@ const BillingForm = ({subscriptionPlan, user}: PropsTypes) => {
                <AlertTitle className="flex items-center gap-2"><AlertCircle className="w-4 aspect-square "/> Attention</AlertTitle>
                <AlertDescription className="ml-6">
                   Your card will be <strong>charged</strong> automatically next month. 
-                  If you don't want this to happen click on the 'cancel subscription button'.
+                  If you don&apos;t want this to happen click on the &apos;cancel subscription button&apos;.
                </AlertDescription>
             </Alert>
          </div>
