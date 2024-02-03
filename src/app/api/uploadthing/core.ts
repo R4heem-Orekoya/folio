@@ -7,7 +7,7 @@ import { pinecone } from '@/lib/pinecone'
 import { PineconeStore } from "langchain/vectorstores/pinecone";
 import { getUserSubscriptionPlan } from "@/lib/paystack";
 import { PLANS } from "@/config/paystack";
-
+import { UTApi } from "uploadthing/server";
 
 const f = createUploadthing();
 const middleware = async () => {
@@ -115,5 +115,7 @@ export const ourFileRouter = {
       .middleware(middleware)
       .onUploadComplete(onUploadComplete),
 } satisfies FileRouter;
+
+export const utapi = new UTApi();
 
 export type OurFileRouter = typeof ourFileRouter;

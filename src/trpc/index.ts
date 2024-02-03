@@ -6,7 +6,7 @@ import { z } from 'zod'
 import { INFINITE_QUERY_LIMIT } from '@/config/infinite-query';
 import { absoluteUrl } from '@/lib/utils';
 import { getUserSubscriptionPlan, paystack } from '@/lib/paystack';
-import { utapi } from '@/app/api/uploadthing/route';
+import { utapi } from '@/app/api/uploadthing/core';
 
 export const appRouter = router({
    authCallback: publicProcedure.query(async () => {
