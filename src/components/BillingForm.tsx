@@ -39,7 +39,7 @@ const BillingForm = ({subscriptionPlan, user}: PropsTypes) => {
                e.preventDefault()
                createPaystackSession()
             }}>
-            <div className="w-[min(650px,100%)] p-4 bg-white rounded-lg border-[1px] border-zinc-200 shadow-md">
+            <div className="w-[min(680px,100%)] p-4 bg-white rounded-lg border-[1px] border-zinc-200 shadow-md">
                <h2 className="text-xl font-semibold text-zinc-800">Subscription Plan</h2>
                <p className="my-2 text-lg  text-zinc-500">
                   You&apos;re currently on the 
@@ -80,15 +80,17 @@ const BillingForm = ({subscriptionPlan, user}: PropsTypes) => {
             </div>
          </form>
          
-         <div className="mt-20 max-w-lg ml-auto">
-            <Alert>
-               <AlertTitle className="flex items-center gap-2"><AlertCircle className="w-4 aspect-square "/> Attention</AlertTitle>
-               <AlertDescription className="ml-6">
-                  Your card will be <strong>charged</strong> automatically next month. 
-                  If you don&apos;t want this to happen click on the &apos;cancel subscription button&apos;.
-               </AlertDescription>
-            </Alert>
-         </div>
+         {!subscriptionPlan.isCancelled && (
+            <div className="mt-20 max-w-lg ml-auto">
+               <Alert>
+                  <AlertTitle className="flex items-center gap-2"><AlertCircle className="w-4 aspect-square "/> Attention</AlertTitle>
+                  <AlertDescription className="ml-6">
+                     Your card will be <strong>charged</strong> automatically next month. 
+                     If you don&apos;t want this to happen click on the &apos;cancel subscription button&apos;.
+                  </AlertDescription>
+               </Alert>
+            </div>
+         )}
       </div>
    )
 }

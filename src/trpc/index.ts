@@ -6,6 +6,7 @@ import { z } from 'zod'
 import { INFINITE_QUERY_LIMIT } from '@/config/infinite-query';
 import { absoluteUrl } from '@/lib/utils';
 import { getUserSubscriptionPlan, paystack } from '@/lib/paystack';
+import { utapi } from '@/app/api/uploadthing/route';
 
 export const appRouter = router({
    authCallback: publicProcedure.query(async () => {
@@ -99,7 +100,7 @@ export const appRouter = router({
       const paystackSession = await paystack.transaction.initialize({
          email: dbUser.email,
          amount: "200000",
-         plan: 'PLN_mjbitp5ce37rd61',
+         plan: 'PLN_419xg675mxryafw',
          channels: ['card'],
          callback_url: billingURL
       })
@@ -179,6 +180,8 @@ export const appRouter = router({
             id: input.id
          }
       })
+      
+      await utapi.deleteFiles(file.key);
       
       return file
    })
