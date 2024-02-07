@@ -100,7 +100,7 @@ export const appRouter = router({
       const paystackSession = await paystack.transaction.initialize({
          email: dbUser.email,
          amount: "200000",
-         plan: 'PLN_419xg675mxryafw',
+         plan: 'PLN_5vgxxxkkxyw51g2',
          channels: ['card'],
          callback_url: billingURL
       })

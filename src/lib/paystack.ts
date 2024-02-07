@@ -55,7 +55,6 @@ export const getUserSubscriptionPlan = async () => {
    // const link = await paystack.subscription.generateSubscriptionLink('SUB_nzufkx3253gny1r')
    // console.log(link);
    
-   
    return {
       ...plan,
       subscriptionId: dbUser.paystackCustomerId,
