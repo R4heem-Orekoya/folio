@@ -80,7 +80,7 @@ const UploadDropZone = ({ isSubscribed } : { isSubscribed : boolean}) => {
          {({ getRootProps, getInputProps, acceptedFiles}) => (
             <div {...getRootProps()} className="border-[1.5px] border-dashed border-zinc-400 rounded-lg h-64 mt-4">
                <div className="flex items-center justify-center h-full w-full">
-                  <label htmlFor="dropzone" className="flex flex-col items-center justify-center gap-4 w-full h-full rounded-lg cursor-pointer bg-zinc-50 hover:bg-zinc-100 p-4">
+                  <div className="flex flex-col items-center justify-center gap-4 w-full h-full rounded-lg cursor-pointer bg-zinc-50 hover:bg-zinc-100 p-4">
                      <div className="flex flex-col items-center justify-center">
                         <FileUp size={30} strokeWidth={1.2} className="stroke-zinc-600"/>
                         <p className="my-2 text-zinc-700 text-center">Click to upload or <span className="text-zinc-500">drop file here</span></p>
@@ -113,7 +113,7 @@ const UploadDropZone = ({ isSubscribed } : { isSubscribed : boolean}) => {
                      )}
                      
                      <input {...getInputProps()} type="file" id="dropzone" className="hidden"/>
-                  </label>
+                  </div>
                </div>
             </div>
          )}
